@@ -1,0 +1,3 @@
+[submodule "Seminars"]
+	path = Seminars
+	url = https://github.com/rassel1976/FormalVerSems
