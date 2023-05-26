@@ -1,0 +1,741 @@
+module CMemory
+    use import int.Int
+    use import map.Map
+
+    type pointer 'a
+
+    type alloc_table 'a
+
+    type memory 'a = map (pointer 'a) 'a
+
+    function offset_min (p : pointer 'a) (a : alloc_table 'a) : int
+
+    function offset_max (p : pointer 'a) (a : alloc_table 'a) : int
+
+    predicate same_block (p1 : pointer 'a) (p2 : pointer 'a)
+
+    predicate is_alloc (p : pointer 'a) (a : alloc_table 'a) = (offset_min p a) <= (offset_max p a)
+
+    predicate valid (p : pointer 'a) (a : alloc_table 'a) = (offset_min p a) <= 0 && (offset_max p a) >= 0 
+
+    predicate valid_range (p : pointer 'a) (a : alloc_table 'a) (left : int) (right : int) =
+        left >= (offset_min p a) && right <=  (offset_max p a)
+    
+    function select (p : pointer 'a) (m : memory 'a) : 'a 
+
+    function store (p : pointer 'a) (m : memory 'a) (v : 'a) : memory 'a
+
+    function shift (p : pointer 'a) (v : int) : pointer 'a
+
+    function sub_pointer (p1 : pointer 'a) (p2 : pointer 'a) : int 
+
+    axiom valid_sub:
+        forall p1 p2 : pointer 'a, a : alloc_table 'a.
+            (same_block p1 p2)
+                -> (sub_pointer p1 p2 = (offset_min p2 a) - (offset_min p1 a))
+
+    axiom valid_select:
+        forall a : alloc_table 'a, m : memory 'a, p : pointer 'a.
+                (valid p a) -> (select p m = get m p)
+
+    axiom valid_store:
+        forall a : alloc_table 'a, m : memory 'a, p : pointer 'a, v : 'a.
+            (valid p a) -> (store p m v = set m p v)
+    
+    axiom shift_min:
+        forall p : pointer 'a, a : alloc_table 'a, v : int.
+            (offset_min (shift p v) a) = (offset_min p a) - v
+    
+    axiom shift_max:
+        forall p : pointer 'a, a : alloc_table 'a, v : int.
+            (offset_max (shift p v) a) = (offset_max p a) - v
+
+    axiom same_same:
+        forall p : pointer 'a.
+            (same_block p p) <-> true
+    
+    axiom same_eq:
+        forall p1, p2 : pointer 'a.
+            (same_block p1 p2) <-> (same_block p2 p1)
+    
+    axiom same_tr:
+        forall p1, p2, p3 : pointer 'a. 
+            (same_block p1 p2) && (same_block p2 p3) -> (same_block p1 p3)
+
+    axiom shift_same:
+        forall p1, p2 : pointer 'a, v : int.
+            (same_block (shift p1 v) p2) <-> (same_block p1 p2)
+
+    val acc (p : pointer 'a) (m : memory 'a) (a : alloc_table 'a) : 'a
+        requires {valid p a}
+        ensures {result = select p m}
+
+    val upd (p : pointer 'a) (m : memory 'a) (a : alloc_table 'a) (v : 'a) : memory 'a
+        requires {valid p a}
+        ensures {result = store p m v}
+
+    val shft (p : pointer 'a) (v : int) : pointer 'a
+        ensures {result = shift p v}
+end
+
+module Task31
+    use import int.Int
+    use import CMemory
+
+    type vertex = {
+        payload : int;
+        vertex_existent : int;
+    }
+
+    type edge = {
+        from : int;
+        toto : int;
+        edge_existent : int;
+    }
+
+    type graph = {
+        vertices : pointer vertex;
+        vsize : int;
+        edges : pointer edge;
+        ecnt : int;
+        esize : int;
+    }
+
+
+    (* 
+        predicate is_vertex(Graph *g, integer v) =
+        0 <= v < g->vsize;
+    *)
+    predicate is_vertex (g : pointer graph) (v : int) (graph_mem : memory graph) =
+        0 <= v < (select g graph_mem).vsize
+    
+
+    (* 
+        predicate edge_valid(Graph *g, integer k) =
+        g->edges[k].existent ==>
+        is_vertex(g, g->edges[k].from) &&
+        is_vertex(g, g->edges[k].to) &&
+        g->vertices[g->edges[k].from].existent &&
+        g->vertices[g->edges[k].to].existent;
+    *)
+    predicate edge_valid (g : pointer graph) (k : int) (vertex_mem : memory vertex) 
+                            (edge_mem: memory edge) (graph_mem : memory graph) = 
+        (* g->edges[k].existent ==> *)
+        (
+            (select (shift (select g graph_mem).edges k) edge_mem).edge_existent <> 0
+        ) ->
+        (* is_vertex(g, g->edges[k].from) && *)
+        (
+            is_vertex g ((select (shift (select g graph_mem).edges k) edge_mem).from) graph_mem
+        ) &&
+        (* is_vertex(g, g->edges[k].to) && *)
+        (
+            is_vertex g ((select (shift (select g graph_mem).edges k) edge_mem).toto) graph_mem
+        ) &&
+        (* g->vertices[g->edges[k].from].existent && *)
+        (
+            (select 
+                (shift 
+                    (select g graph_mem).vertices
+                    (* g->edges[k].from *)
+                    ((select (shift (select g graph_mem).edges k) edge_mem).from)
+                )
+                vertex_mem
+            ).vertex_existent <> 0
+        ) && 
+        (* g->vertices[g->edges[k].to].existent; *)
+        (
+            (select 
+                (shift 
+                    (select g graph_mem).vertices
+                    (* g->edges[k].from *)
+                    ((select (shift (select g graph_mem).edges k) edge_mem).toto)
+                )
+                vertex_mem
+            ).vertex_existent <> 0
+        )
+    
+
+    (* 
+        predicate edges_valid(Graph *g, integer n) =
+            \forall integer k; 0 <= k < n ==> edge_valid(g, k);
+    *)
+    predicate edges_valid (g : pointer graph) (n : int) (vertex_mem : memory vertex) 
+                                (edge_mem: memory edge) (graph_mem : memory graph) =
+        forall k : int.
+            0 <= k < n -> (edge_valid g k vertex_mem edge_mem graph_mem)
+
+
+    (*
+        predicate graph_valid(Graph *g) =
+        g->vsize > 0 &&
+        g->esize > 0 &&
+        g->esize >= g->ecnt >= 0 &&
+        \valid(g->vertices + (0 .. g->vsize - 1)) &&
+        \valid(g->edges + (0 .. g->esize - 1)) &&
+        edges_valid(g, g->ecnt) &&
+        (\forall integer k; g->ecnt <= k < g->esize ==> !g->edges[k].existent); 
+    *)
+    predicate graph_valid (g : pointer graph) (vertex_mem : memory vertex) 
+                            (edge_mem: memory edge) (graph_mem : memory graph) 
+                                (vertex_alloc : alloc_table vertex) (edge_alloc : alloc_table edge) =
+        (* g->vsize > 0 && *) 
+        (
+            (select g graph_mem).vsize > 0
+        ) &&
+        (* g->esize > 0 && *)
+        (
+            (select g graph_mem).esize > 0
+        ) &&
+        (* g->esize >= g->ecnt >= 0 && *)
+        (
+            (select g graph_mem).esize >= (select g graph_mem).ecnt >= 0
+        ) &&
+        (* \valid(g->vertices + (0 .. g->vsize - 1)) && *)
+        (
+            forall k : int.
+                0 <= k < ((select g graph_mem).vsize) ->
+                    (valid (shift (select g graph_mem).vertices k) vertex_alloc)
+        ) &&
+        (* \valid(g->edges + (0 .. g->esize - 1)) && *)
+        (
+            forall k : int.
+                0 <= k < ((select g graph_mem).esize) ->
+                    (valid (shift (select g graph_mem).edges k) edge_alloc)
+        ) &&
+        (* edges_valid(g, g->ecnt) && *)
+        (
+            edges_valid g ((select g graph_mem).ecnt) vertex_mem edge_mem graph_mem
+        ) &&
+        (* (\forall integer k; g->ecnt <= k < g->esize ==> !g->edges[k].existent);  *)
+        (
+            forall k : int.
+                ((select g graph_mem).ecnt) <= k < ((select g graph_mem).esize) ->
+                    ((select (shift (select g graph_mem).edges k) edge_mem).edge_existent = 0)
+        )
+
+    (* predicate range_existent(Graph *g, integer m, integer n) = 
+        \forall integer k; m <= k < n ==> g->edges[k].existent; 
+    *)
+    predicate range_existent (g : pointer graph) (m : int) (n : int) 
+                                (edge_mem : memory edge) (graph_mem : memory graph) =
+        (
+            forall k : int. 
+                m <= k < n -> 
+                    ((select (shift (select g graph_mem).edges k) edge_mem).edge_existent <> 0)
+        )
+
+    (* predicate full(Graph *g) = 
+        range_existent(g, 0, g->esize); 
+    *)
+    predicate full (g : pointer graph) (edge_mem : memory edge) (graph_mem : memory graph) =
+        (
+            range_existent g 0 (select g graph_mem).esize edge_mem graph_mem 
+        ) 
+end
+
+(* 
+    axiomatic EdgesCount 
+*)
+module EdgesCount
+    use import CMemory
+    use import Task31
+    use import int.Int
+    (* 
+        logic integer count{L}(Graph *g, integer f, integer t, integer m, integer n); 
+    *)
+    function count (g : pointer graph) (f : int) (t : int) (m : int) (n : int) (edge_mem : memory edge) (graph_mem : memory graph) : int
+
+    (* 
+        axiom count_zero: 
+            \forall Graph *g, integer f, t, m, n; 
+                m >= n ==>
+                    count(g, f, t, m, n) == 0; 
+    *)
+    axiom count_zero:
+        forall g : pointer graph, f : int, t : int, m : int, n : int, 
+                    edge_mem : memory edge, graph_mem : memory graph.
+            m >= n -> 
+                ((count g f t m n edge_mem graph_mem) = 0)
+
+    (* 
+        predicate count_one_p{L} (Graph *g, integer f, integer t, integer m) =
+            count(g, f, t, m, m + 1) == 
+            (g->edges[m].existent && g->edges[m].from == f && g->edges[m].to == t ? 1 : 0);
+    *)
+    predicate count_one_p (g : pointer graph) (f : int) (t : int) (m : int) (edge_mem : memory edge) (graph_mem : memory graph)  =
+        (
+            (count g f t m (m + 1) edge_mem graph_mem) = 
+            (
+                if (
+                    ((select (shift (select g graph_mem).edges m) edge_mem).edge_existent <> 0) &&
+                    (select (shift (select g graph_mem).edges m) edge_mem).from = f &&
+                    (select (shift (select g graph_mem).edges m) edge_mem).toto = t
+                ) 
+                then 1 
+                else 0
+            )
+        )
+
+    (*
+        axiom count_one{L}: \forall Graph *g, integer f, t, m; count_one_p(g, f, t, m); 
+    *)
+    axiom count_one:
+        forall g : pointer graph, f : int, t : int, m : int, edge_mem : memory edge, graph_mem : memory graph.
+            (count_one_p g f t m edge_mem graph_mem)
+
+    (*
+        predicate count_split_p{L}(Graph *g, integer f, integer t, integer m, integer n, integer k) =
+            count(g, f, t, m, k) == count(g, f, t, m, n) + count(g, f, t, n, k);
+    *)
+    predicate count_split_p (g : pointer graph) (f : int) (t : int) (m : int) (n : int) (k : int) 
+                                (edge_mem : memory edge) (graph_mem : memory graph) =
+        (count g f t m k edge_mem graph_mem) = 
+            (count g f t m n edge_mem graph_mem) + (count g f t n k edge_mem graph_mem)
+
+    (*
+        axiom count_split{L}: \forall Graph *g, integer f, t, m, n, k; m <= n <= k ==>
+            count_split_p(g, f, t, m, n, k);
+    *)
+    axiom count_split:
+        forall g : pointer graph, f : int, t : int, m : int, n : int, k : int, 
+                                edge_mem : memory edge, graph_mem : memory graph.
+                (
+                    m <= n <= k -> 
+                    (count_split_p g f t m n k edge_mem graph_mem)
+                )
+
+    (*     
+        logic integer all_count(Graph *g, integer f, integer t) = count(g, f, t, 0, g->esize); 
+    *)
+    function all_count (g : pointer graph) (f : int) (t : int) (edge_mem : memory edge) (graph_mem : memory graph) : int = 
+        (count g f t 0 (select g graph_mem).esize edge_mem graph_mem)
+    
+end
+
+module Graph
+    use import int.Int
+    use import ref.Ref
+    use import CMemory
+    use import Task31
+    use import EdgesCount
+
+    (* С первыми двумя леммами вообще магия какая-то - доказывается invariant через раз и то если очень сильно попросить *)
+
+    (* говорим, что все от ecnt до esize нули!!!! *)
+    lemma l_painful_zero_count_after_ecnt: 
+        forall g : pointer graph, f : int, t : int, m : int, vertex_mem : memory vertex, edge_mem : memory edge, graph_mem : memory graph, 
+                        vertex_alloc : alloc_table vertex, edge_alloc : alloc_table edge.
+        (graph_valid g vertex_mem edge_mem graph_mem vertex_alloc edge_alloc) -> 
+            ((select g graph_mem).ecnt <= m - 1 < (select g graph_mem).esize) -> 
+                (count g f t (m - 1) m edge_mem graph_mem) = 0
+
+    (* учим считать *)
+    lemma l_painful_learning_how_to_count: 
+        forall g : pointer graph, f : int, t : int, m : int, vertex_mem : memory vertex, edge_mem : memory edge, graph_mem : memory graph.
+            (0 <= m - 1 <= (select g graph_mem).ecnt) -> 
+                (count g f t 0 m edge_mem graph_mem) = 
+                    (count g f t 0 (m - 1) edge_mem graph_mem) + (count g f t (m - 1) m edge_mem graph_mem)
+
+
+    lemma l_count_one_p:
+        forall g : pointer graph, f : int, t : int, m : int, edge_mem : memory edge, graph_mem : memory graph.
+        (
+            (count_one_p g f t m edge_mem graph_mem) && (count g f t m (m + 1) edge_mem graph_mem) = 
+            (
+                if (
+                    ((select (shift (select g graph_mem).edges m) edge_mem).edge_existent <> 0) &&
+                    (select (shift (select g graph_mem).edges m) edge_mem).from = f &&
+                    (select (shift (select g graph_mem).edges m) edge_mem).toto = t
+                ) 
+                then 1 
+                else 0
+            )
+        )
+    
+    let rec lemma l_count_empty_tail (g : pointer graph) (f : int) (t : int) (m : int) 
+                                (vertex_mem : memory vertex) (edge_mem : memory edge) (graph_mem : memory graph)
+                                    (vertex_alloc : alloc_table vertex) (edge_alloc : alloc_table edge) (graph_alloc : alloc_table graph) 
+        variant {m - (select g graph_mem).ecnt}
+        requires { (valid g graph_alloc) && (graph_valid g vertex_mem edge_mem graph_mem vertex_alloc edge_alloc) }
+        requires { (select g graph_mem).ecnt <= m <= (select g graph_mem).esize }
+        
+        ensures { (count g f t (select g graph_mem).ecnt m edge_mem graph_mem) = 0 }
+    =   
+        if 
+            m > (select g graph_mem).ecnt 
+        then (
+            assert {(count g f t (m - 1) m edge_mem graph_mem) = 0};
+            (* творим магию разбиения на промежутки *)
+            assert {
+                (count g f t (select g graph_mem).ecnt m edge_mem graph_mem) = 
+                        (count g f t (select g graph_mem).ecnt (m - 1) edge_mem graph_mem) + (count g f t (m - 1) m edge_mem graph_mem)
+            };
+            (l_count_empty_tail g f t (m - 1) vertex_mem edge_mem graph_mem vertex_alloc edge_alloc graph_alloc)
+        ) else ()
+    
+    lemma l_count_split_mini: 
+         forall g : pointer graph, f : int, t : int, m : int, vertex_mem : memory vertex, edge_mem : memory edge, graph_mem : memory graph.
+            (
+                (*
+                    говорим что для любого m сумма по всему "отрезку" равна сумме "отрезков" от 0 до m и от m до конца 
+                *)
+                (0 <= m < (select g graph_mem).ecnt) -> 
+                    (count g f t 0 (select g graph_mem).ecnt edge_mem graph_mem) = 
+                        (count g f t 0 m edge_mem graph_mem) + (count g f t m (select g graph_mem).ecnt edge_mem graph_mem)
+            )
+
+    lemma l_count_split: 
+        forall g : pointer graph, f : int, t : int, m : int, vertex_mem : memory vertex, edge_mem : memory edge, graph_mem : memory graph, 
+                        vertex_alloc : alloc_table vertex, edge_alloc : alloc_table edge.
+        (* 
+            a = b
+            b = c + d
+            a = c + d
+        *)
+        (0 <= (select g graph_mem).ecnt <= (select g graph_mem).esize) -> 
+            (
+                all_count g f t edge_mem graph_mem = (count g f t 0 (select g graph_mem).esize edge_mem graph_mem)
+            ) &&
+            (
+                (* для этого тоже лемма нужна - не вывозит ((((( *)
+                (count g f t 0 (select g graph_mem).esize edge_mem graph_mem) = 
+                    (count g f t 0 (select g graph_mem).ecnt edge_mem graph_mem) + 
+                        (count g f t (select g graph_mem).ecnt (select g graph_mem).esize edge_mem graph_mem)
+            ) &&
+            (
+                (all_count g f t edge_mem graph_mem) = 
+                    (count g f t 0 (select g graph_mem).ecnt edge_mem graph_mem) + 
+                        (count g f t (select g graph_mem).ecnt (select g graph_mem).esize edge_mem graph_mem)
+            )
+
+    (*
+        requires \valid(g) && graph_valid(g);
+        requires is_vertex(g, f);
+        requires is_vertex(g, t);
+        requires g->vertices[f].existent;
+        requires g->vertices[t].existent;
+        ensures \result == all_count(g, f, t);
+    *)
+    (*
+        int count(Graph *g, int f, int t)
+        {
+            int c = 0;
+            for (int i = 0; i < g->ecnt; ++i) {
+                if (g->edges[i].existent && g->edges[i].from == f && g->edges[i].to == t) {
+                    ++ c;
+                }
+            }
+            return c;
+        } 
+    *)
+    let count (g: pointer graph) (f : int) (t : int) 
+                    (vertex_alloc : alloc_table vertex) (edge_alloc : alloc_table edge) (graph_alloc : alloc_table graph)
+                        (vertex_mem : memory vertex) (edge_mem : memory edge) (graph_mem : memory graph)
+    requires { valid g graph_alloc }
+    requires { graph_valid g vertex_mem edge_mem graph_mem vertex_alloc edge_alloc }
+    requires { is_vertex g f graph_mem }
+    requires { is_vertex g t graph_mem }
+    requires { (select (shift (select g graph_mem).vertices f) vertex_mem).vertex_existent <> 0 }
+    requires { (select (shift (select g graph_mem).vertices t) vertex_mem).vertex_existent <> 0 }
+    ensures { result = (all_count g f t edge_mem graph_mem) }
+    =
+    let c = ref 0 in
+    let i = ref 0 in
+    let stop = ref 0 in
+    stop := (acc g graph_mem graph_alloc).ecnt;
+    while !i < !stop do
+        variant { !stop - !i }
+        invariant { 0 <= !i }
+        invariant { !i <= !stop }
+        invariant{ (count g f t 0 !i edge_mem graph_mem) = !c }
+        if  
+        (
+            (acc (shft (acc g graph_mem graph_alloc).edges !i) edge_mem edge_alloc).edge_existent <> 0
+        ) &&
+        (
+            (acc (shft (acc g graph_mem graph_alloc).edges !i) edge_mem edge_alloc).from = f
+        ) &&
+        (
+            (acc (shft (acc g graph_mem graph_alloc).edges !i) edge_mem edge_alloc).toto = t
+        )
+        then  (
+            c := !c + 1;
+            assert{(count g f t !i (!i + 1) edge_mem graph_mem) = 1}
+        ) else (
+            assert{(count g f t !i (!i + 1) edge_mem graph_mem) = 0}
+        );
+        i := !i + 1;
+    done;
+    (* сюда нужна лемма как на семинаре делали большой страшный ассерт и отсюда должно(? по идее ) следовать ensures *)
+    assert{ (count g f t 0 (select g graph_mem).ecnt edge_mem graph_mem) = !c };
+    !c
+
+
+    (*
+        /*@
+            requires \valid(g) && graph_valid(g);
+            requires is_vertex(g, f);
+            requires is_vertex(g, t);
+            requires g->vertices[f].existent;
+            requires g->vertices[t].existent;
+            requires !full(g);
+            ensures graph_valid(g);
+            ensures all_count(g, f, t) == all_count{Pre}(g, f, t) + 1;
+            ensures \forall integer f2, t2; (f2 != f || t2 != t) ==> all_count(g, f2, t2) == all_count{Pre}(g, f2, t2);
+        */
+        void
+        add_edge(Graph *g, int f, int t)
+        {
+            if (g->ecnt < g->esize) {
+                g->edges[g->ecnt].from = f;
+                g->edges[g->ecnt].to = t;
+                g->edges[g->ecnt].existent = 1;
+                ++ g->ecnt;
+                return;
+            }
+
+            for (int i = 0; i < g->ecnt; ++i) {
+            if (!g->edges[i].existent) {
+                    g->edges[i].from = f;
+                    g->edges[i].to = t;
+                    g->edges[i].existent = 1;
+                    return;
+                }
+            }
+        } 
+    *)
+
+    (* Нам надо поменять edge_mem и graph_mem -> делаем ref *)
+    let add_edge (g: pointer graph) (f : int) (t : int) 
+                    (vertex_alloc : alloc_table vertex) (edge_alloc : alloc_table edge) (graph_alloc : alloc_table graph)
+                        (vertex_mem : memory vertex) (edge_mem : ref (memory edge)) (graph_mem : ref (memory graph))
+    requires { valid g graph_alloc }
+    requires { graph_valid g vertex_mem !edge_mem !graph_mem vertex_alloc edge_alloc }
+    requires { is_vertex g f !graph_mem }
+    requires { is_vertex g t !graph_mem }
+    requires { (select (shift (select g !graph_mem).vertices f) vertex_mem).vertex_existent <> 0 }
+    requires { (select (shift (select g !graph_mem).vertices t) vertex_mem).vertex_existent <> 0 }
+    requires { not full g !edge_mem !graph_mem }
+    ensures { graph_valid g vertex_mem !edge_mem !graph_mem vertex_alloc edge_alloc }
+    ensures { (all_count g f t !edge_mem !graph_mem) = (all_count g f t (old !edge_mem) (old !graph_mem)) + 1 }
+    ensures { 
+        forall f2 : int, t2 : int.
+            (f2 <> f || t2 <> t) ->
+                (all_count g f2 t2 !edge_mem !graph_mem) = (all_count g f2 t2 (old !edge_mem) (old !graph_mem))
+    }
+    =
+    'Pre:
+    if (
+        (acc g !graph_mem graph_alloc).ecnt < (acc g !graph_mem graph_alloc).esize 
+    ) then (
+        edge_mem := (
+            upd (shft (acc g !graph_mem graph_alloc).edges (acc g !graph_mem graph_alloc).ecnt) !edge_mem edge_alloc {
+                from = f;
+                toto = t;
+                edge_existent = 1;
+            }
+        );
+        graph_mem := (
+            (
+                upd g !graph_mem graph_alloc {
+                    vertices = (acc g !graph_mem graph_alloc).vertices; 
+                    vsize = (acc g !graph_mem graph_alloc).vsize; 
+                    edges = (acc g !graph_mem graph_alloc).edges;
+                    ecnt = (acc g !graph_mem graph_alloc).ecnt + 1;
+                    esize = (acc g !graph_mem graph_alloc).esize;
+                }
+            )
+        );
+        
+        (* второй и третий postcondition (ensures) надо доказать *)
+        
+        (* второй *)
+        let i = ref 0 in
+        let sz = ref 0 in 
+        sz := (acc g !graph_mem graph_alloc).esize;
+        while !i < !sz do
+            variant { !sz - !i }
+            invariant { !i >= 0 }
+            invariant { !i <= !sz }
+            (* для всех кроме ecnt - 1 у нас ничего не изменилось *)
+            invariant {
+                forall j : int.
+                    (0 <= j < !i) && (j <> (select g !graph_mem).ecnt - 1) ->
+                        (select (shift (select g (at !graph_mem 'Pre)).edges j) (at !edge_mem 'Pre)) = 
+                            (select (shift (select g !graph_mem).edges j) !edge_mem)
+            }
+            (* для всех кроме ecnt-1 count не изменился *)
+            invariant {
+                forall j : int.
+                    (0 <= j < !i) && (j <> (select g !graph_mem).ecnt - 1) ->
+                        (count g f t j (j + 1) (at !edge_mem 'Pre) (at !graph_mem 'Pre) ) = 
+                            (count g f t j (j + 1) !edge_mem !graph_mem)
+            }
+            (* от 0 до ecnt-1 не изменилось, а после у нас добавилось 1 ребро => там count на 1 больше *)
+            invariant { 
+                (count g f t 0 !i !edge_mem !graph_mem) = 
+                    (count g f t 0 !i (at !edge_mem 'Pre) (at !graph_mem 'Pre)) + 
+                        (
+                            if (!i < (select g !graph_mem).ecnt) 
+                            then 0 
+                            else 1
+                        )
+            }
+            i := !i + 1
+        done;
+        
+        (* третий *)
+        let i1 = ref 0 in
+        let sz1 = ref 0 in 
+        sz1 := (acc g !graph_mem graph_alloc).esize;
+        while !i1 < !sz1 do
+            variant { !sz1 - !i1 }
+            invariant { !i1 >= 0 }
+            invariant { !i1 <= !sz1 }
+            (* не могу понять что не так в этом инварианте .. *)
+            (* немного боли в комментариях - нужно было еще леммы добавить, чтоб он понимал что от ecnt 
+                до esize там все count = 0 и как считать итеративно (буквально!!) - отрезок 0,m считаем как 
+                отрезок 0,m-1 + m-1,m ..
+             *)
+            invariant { 
+                forall j : int. 
+                    (0 <= j <= !i1) -> 
+                        forall f2 : int, t2 : int. 
+                            (f2 <> f || t2 <> t) ->
+                                (count g f2 t2 0 j !edge_mem !graph_mem) = 
+                                    (count g f2 t2 0 j (at !edge_mem 'Pre) (at !graph_mem 'Pre))
+            }
+            i1 := !i1 + 1;
+        done;
+
+    ) else (
+        let ret = ref 0 in
+        let i = ref 0 in
+        let gecnt = ref 0 in
+        gecnt := (acc g !graph_mem graph_alloc).ecnt;
+        while !i < !gecnt do
+            variant { !gecnt - !i }
+            invariant { !i >= 0 }
+            invariant { !i <= !gecnt }
+
+            (* либо у нас уже флаг выставлен для завершения цикла, либо существует такое edge, у которого edge_existent = 0 *)
+            (* важный инвариант - мы буквально говорим что существует такой элемент пустой *)
+            (* тут была очень неприятная ошибка - вместо && было ->. "Если то" тут не подходит :) *)
+            invariant {
+                (!ret = 1) ||
+                (
+                    (!ret = 0) &&
+                    exists j : int.
+                        (!i <= j < !gecnt) &&
+                            ((select (shift (select g !graph_mem).edges j) !edge_mem).edge_existent = 0)
+                )
+            }
+
+            (* не доказывается все ensures *)
+            (* первый - одного инварианта достаточно *)
+            invariant { graph_valid g vertex_mem !edge_mem !graph_mem vertex_alloc edge_alloc }
+
+            (* если ret пройден то сумма на 1 больше становится *)
+            invariant { 
+                (all_count g f t !edge_mem !graph_mem) = (all_count g f t (at !edge_mem 'Pre) (at !graph_mem 'Pre)) + 
+                    (
+                        if (!ret = 1) 
+                        then 1
+                        else 0
+                    )
+            }
+            (* просто ensures *)
+            invariant {       
+                forall f2 : int, t2 : int. 
+                    (f2 <> f || t2 <> t) ->
+                        (all_count g f2 t2 !edge_mem !graph_mem) = 
+                            (all_count g f2 t2 (at !edge_mem 'Pre) (at !graph_mem 'Pre))
+            }
+            
+            'Pre1:
+            if (
+                !ret = 0 &&
+                (acc (shft (acc g !graph_mem graph_alloc).edges !i) !edge_mem edge_alloc).edge_existent = 0
+            ) then (
+                edge_mem := (
+                    upd (shft (acc g !graph_mem graph_alloc).edges !i) !edge_mem edge_alloc {
+                        from = f;
+                        toto = t;
+                        edge_existent = 1;
+                    }
+                );
+                ret := 1;
+
+                let l = ref 0 in
+                let sz = ref 0 in 
+                sz := (acc g !graph_mem graph_alloc).esize;
+                (* копипаста с правками переменных из ифа до цикла *)
+                while !l < !sz do
+                    variant { !sz - !l }
+                    invariant { !l >= 0 }
+                    invariant { !l <= !sz }
+                    (* для всех кроме i-го у нас ничего не изменилось *)
+                    invariant {
+                        forall j : int.
+                            (0 <= j < !l) && (j <> !i) ->
+                                (select (shift (select g (at !graph_mem 'Pre1)).edges j) (at !edge_mem 'Pre1)) = 
+                                    (select (shift (select g !graph_mem).edges j) !edge_mem)
+                    }
+                     
+                    (* для всех кроме i count не изменился *)
+                    invariant {
+                        forall j : int.
+                            (0 <= j < !l) && (j <> !i) ->
+                                (count g f t j (j + 1) (at !edge_mem 'Pre1) (at !graph_mem 'Pre1) ) = 
+                                    (count g f t j (j + 1) !edge_mem !graph_mem)
+                    }
+                    (* от 0 до i не изменилось, а после у нас добавилось 1 ребро => там count на 1 больше *)
+                    invariant { 
+                        (count g f t 0 !l !edge_mem !graph_mem) = 
+                            (count g f t 0 !l (at !edge_mem 'Pre1) (at !graph_mem 'Pre1)) + 
+                                (
+                                    if (!l <= !i) 
+                                    then 0 
+                                    else 1
+                                )
+                    } 
+                    l := !l + 1
+                done;
+
+                (* тоже просто копипаста из ифа до цикла *)
+                let l1 = ref 0 in
+                let sz1 = ref 0 in 
+                sz1 := (acc g !graph_mem graph_alloc).esize;
+                while !l1 < !sz1 do
+                    variant { !sz1 - !l1 }
+                    invariant { !l1 >= 0 }
+                    invariant { !l1 <= !sz1 }
+                    
+                    invariant { 
+                        forall j : int. 
+                            (0 <= j <= !l1) -> 
+                                forall f2 : int, t2 : int. 
+                                    (f2 <> f || t2 <> t) ->
+                                        (count g f2 t2 0 j !edge_mem !graph_mem) = 
+                                            (count g f2 t2 0 j (at !edge_mem 'Pre1) (at !graph_mem 'Pre1))
+                    }
+                    l1 := !l1 + 1;
+                done;
+                (* так как мы в ифе, то это обязано выполниться *)
+                assert {(all_count g f t !edge_mem !graph_mem) = (all_count g f t (at !edge_mem 'Pre1) (at !graph_mem 'Pre1)) + 1};
+            );
+            i := !i + 1;
+        done;
+        (* для postcondition-a что если !ret выполнен, то сумма увеличилась на 1 *)
+        assert { 
+            (all_count g f t !edge_mem !graph_mem) = (all_count g f t (at !edge_mem 'Pre) (at !graph_mem 'Pre)) + 
+                (
+                    if (!ret = 1) 
+                    then 1
+                    else 0
+                )
+        };
+        
+    );
+end

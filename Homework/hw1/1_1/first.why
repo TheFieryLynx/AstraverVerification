@@ -1,0 +1,71 @@
+theory Second
+    use import int.Int
+
+    predicate limitation (x : int) =
+        -2147483648 <= x && x <= 2147483647
+
+    predicate check_overflow (a : int) (b : int) =
+        (a > 0 && b > 0 && (2147483647 - b < a)) || (a < 0 && b < 0 && (-2147483648 - b > a))
+    
+    predicate phi_1 (x1 : int) (x2 : int) (x3 : int) =
+        (limitation x1) && (limitation x2) && (limitation x3) && (limitation (x1 - x3)) && (limitation (x1 + x2 - x3))
+
+    predicate psi_1 (x1 : int) (x2 : int) (x3 : int) =
+        x1 + x2 - x3 = x1 - x3 + x2
+
+    predicate phi_2 (x1 : int) (x2 : int) (x3 : int) =
+        (limitation x1) && (limitation x2) && (limitation x3) && (limitation (x1 + x2 - x3))
+
+    predicate psi_2 (x1 : int) (x2 : int) (x3 : int) =
+        x1 + x2 - x3 = x1 - x3 + x2
+
+    predicate m_1 (x1 : int) (x2 : int) (x3 : int) = 
+        (limitation (x1 - x3 + x2)) && (limitation (x1 - x3)) && (limitation x1) && (limitation x2) && (limitation x3)
+
+    predicate branch_1 (x1 : int) (x2 : int) (x3 : int) =
+        not (check_overflow x1 x2) && not (check_overflow (x1 + x2) (-x3)) && (limitation (x1 + x2 -x3))
+
+    predicate branch_2 (x1 : int) (x2 : int) (x3 : int) =
+        not (check_overflow x1 (-x3)) && not (check_overflow (x1 - x3) x2) && (limitation (x1 - x3 + x2))
+
+    predicate branch_3 (x1 : int) (x2 : int) (x3 : int) =
+        not (check_overflow x2 (-x3)) && not (check_overflow (x2 + x3) x1) && (limitation (x2 - x3 + x1))
+
+    predicate m_2 (x1 : int) (x2 : int) (x3 : int) = 
+        (limitation x1) && (limitation x2) && (limitation x3) && ((branch_1 x1 x2 x3) || (branch_2 x1 x2 x3) || (branch_3 x1 x2 x3))
+
+    goal p1_t1_partial_correctness:
+        forall x1: int, x2: int, x3: int.
+        (phi_1 x1 x2 x3) && (m_1 x1 x2 x3) -> (psi_1 x1 x2 x3)
+
+    goal p1_t1_full_correctness:
+        forall x1: int, x2: int, x3: int.
+        (phi_1 x1 x2 x3) -> (m_1 x1 x2 x3) && (psi_1 x1 x2 x3)
+
+    goal p1_t2_partial_correctness:
+        forall x1: int, x2: int, x3: int.
+        (phi_2 x1 x2 x3) && (m_1 x1 x2 x3) -> (psi_2 x1 x2 x3)
+
+    goal p1_t2_full_correctness:
+        forall x1: int, x2: int, x3: int.
+        (phi_2 x1 x2 x3) -> (m_1 x1 x2 x3) && (psi_2 x1 x2 x3)
+
+    
+
+    goal p2_t1_partial_correctness:
+        forall x1: int, x2: int, x3: int.
+        (phi_1 x1 x2 x3) && (m_2 x1 x2 x3) -> (psi_1 x1 x2 x3)
+
+    goal p2_t1_full_correctness:
+        forall x1: int, x2: int, x3: int.
+        (phi_1 x1 x2 x3) -> (m_2 x1 x2 x3) && (psi_1 x1 x2 x3)
+
+    goal p2_t2_partial_correctness:
+        forall x1: int, x2: int, x3: int.
+        (phi_2 x1 x2 x3) && (m_2 x1 x2 x3) -> (psi_2 x1 x2 x3)
+
+    goal p2_t2_full_correctness:
+        forall x1: int, x2: int, x3: int.
+        (phi_2 x1 x2 x3) -> (m_2 x1 x2 x3) && (psi_2 x1 x2 x3)
+
+end

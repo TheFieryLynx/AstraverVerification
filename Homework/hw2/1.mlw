@@ -1,0 +1,20 @@
+module Task1
+    use import int.Int
+    use import number.Divisibility
+
+    function power(x : int) (n : int): int = 
+        if n = 0 then 
+            1 
+        else 
+            x * power x (n - 1)
+
+    let rec task_1 (n : int)
+        (* неотрицательное целое *)
+        requires { n >= 0 } 
+        (* необходим остаток от деление на 5 = 0 *)
+        ensures { (divides 5 ((power 2 (3 * n)) - (power 3 n))) = true }
+    = if n = 0 then
+        (divides 5 ((power 2 (3 * n)) - (power 3 n))) = true
+      else 
+        task_1 (n - 1)
+end

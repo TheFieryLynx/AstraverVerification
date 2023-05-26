@@ -1,0 +1,1401 @@
+WHYLIB is not set, using /home/andrew/.opam/4.10.0/lib/astraver as default
+Parsing
+Normalization
+Typing logic labels
+Typing code
+Typing axiomatic Padding
+Typing logic type declaration padding
+Typing axiomatic EdgesCount
+Typing axiomatic Graph
+Typing axiomatic LF__Axiomatic__l_count_empty_tail
+Typing axiomatic Padding
+Typing tag voidP
+Typing tag charP
+Typing tag __anonstruct_Vertex_2
+Typing tag __anonstruct_Edge_3
+Typing tag __anonstruct_Graph_4
+Typing axiomatic EdgesCount
+Typing lemma/axiom count_zero
+Typing lemma/axiom count_one
+Typing lemma/axiom count_split
+occurrences table for axiom count_split in axiomatic EdgesCount:
+  147: 
+  149: L ;
+  148: 
+  
+occurrences table for axiom count_one in axiomatic EdgesCount:
+  147: 
+  149: 
+  148: L ;
+  
+occurrences table for axiom count_zero in axiomatic EdgesCount:
+  147: L ;
+  149: 
+  148: 
+  
+Typing axiomatic Graph
+Typing lemma/axiom l_painful_zero_count_after_ecnt
+Typing lemma/axiom l_painful_learning_how_to_count
+Typing lemma/axiom l_count_one_p
+Typing lemma/axiom l_count_split_mini
+Typing lemma/axiom l_count_split
+Typing axiomatic LF__Axiomatic__l_count_empty_tail
+Typing lemma/axiom LF__Lemma__l_count_empty_tail
+Computation of call graph
+***********************************
+Logic call graph: has 9 components
+***********************************
+Component 0:
+ is_vertex calls: 
+
+Component 1:
+ edge_valid calls: is_vertex,
+is_vertex
+
+Component 2:
+ edges_valid calls: edge_valid
+
+Component 3:
+ graph_valid calls: edges_valid
+
+Component 4:
+ range_existent calls: 
+
+Component 5:
+ full calls: range_existent
+
+Component 6:
+ count_split_p calls: count, count,
+count
+
+ count_one_p calls: count
+
+ count calls: count, count_one_p,
+count_split_p
+
+Component 7:
+ all_count calls: count
+
+Component 8:
+ _LF__Predicate__l_count_empty_tail calls: 
+
+******************************
+Call graph: has 3 components
+******************************
+Component 0:
+ l_count_empty_tail calls: l_count_empty_tail
+
+Component 1:
+ count calls: 
+
+Component 2:
+ add_edge calls: 
+
+Adding invariants
+Computation of regions
+Separation: treating function l_count_empty_tail
+Separation: treating function l_count_empty_tail
+Separation: treating function count
+Separation: treating function count
+Separation: treating function add_edge
+Separation: treating function add_edge
+Computation of effects
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function is_vertex:
+ alloc_table: 
+ tag_table: 
+ memories: (g_2 : mem-field "vsize") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: v at (Here), g at (Here)
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function edge_valid:
+ alloc_table: 
+ tag_table: 
+ memories: (g_0_3 : mem-field "edges") at (L),
+           (g_0_3 : mem-field "vsize") at (L),
+           (g_0_3 : mem-field "vertices") at (L),
+           (edges_15 : mem-field "existent_0") at (L),
+           (edges_15 : mem-field "to") at (L),
+           (edges_15 : mem-field "from") at (L),
+           (vertices_16 : mem-field "existent") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: k_1 at (Here), g_0 at (Here)
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function edges_valid:
+ alloc_table: 
+ tag_table: 
+ memories: (g_1_4 : mem-field "edges") at (L),
+           (g_1_4 : mem-field "vsize") at (L),
+           (g_1_4 : mem-field "vertices") at (L),
+           (edges_39 : mem-field "existent_0") at (L),
+           (edges_39 : mem-field "to") at (L),
+           (edges_39 : mem-field "from") at (L),
+           (vertices_40 : mem-field "existent") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: n_1 at (Here), g_1 at (Here)
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function graph_valid:
+ alloc_table: (vertices_17 : alloc-root "__anonstruct_Vertex_2") at (L),
+              (edges_18 : alloc-root "__anonstruct_Edge_3") at (L)
+ tag_table: 
+ memories: (g_2_5 : mem-field "esize") at (L),
+           (g_2_5 : mem-field "ecnt") at (L),
+           (g_2_5 : mem-field "edges") at (L),
+           (g_2_5 : mem-field "vsize") at (L),
+           (g_2_5 : mem-field "vertices") at (L),
+           (edges_18 : mem-field "existent_0") at (L),
+           (edges_18 : mem-field "to") at (L),
+           (edges_18 : mem-field "from") at (L),
+           (vertices_17 : mem-field "existent") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: g_2 at (Here)
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function range_existent:
+ alloc_table: 
+ tag_table: 
+ memories: (g_4_7 : mem-field "edges") at (L),
+           (edges_19 : mem-field "existent_0") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: n_2 at (Here), m at (Here), g_4 at (Here)
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function full:
+ alloc_table: 
+ tag_table: 
+ memories: (g_3_6 : mem-field "esize") at (L),
+           (g_3_6 : mem-field "edges") at (L),
+           (edges_51 : mem-field "existent_0") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: g_3 at (Here)
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function count_split_p:
+ alloc_table: 
+ tag_table: 
+ memories: (g_5_8 : mem-field "edges") at (L),
+           (edges_21 : mem-field "existent_0") at (L),
+           (edges_21 : mem-field "to") at (L),
+           (edges_21 : mem-field "from") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: k_5 at (Here), n_5 at (Here), m_4 at (Here), t_3 at (Here),
+         f_3 at (Here), g_9 at (Here)
+
+Effects for logic function count_one_p:
+ alloc_table: 
+ tag_table: 
+ memories: (g_5_8 : mem-field "edges") at (L),
+           (edges_21 : mem-field "existent_0") at (L),
+           (edges_21 : mem-field "to") at (L),
+           (edges_21 : mem-field "from") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: m_2 at (Here), t_1 at (Here), f_1 at (Here), g_7 at (Here)
+
+Effects for logic function count:
+ alloc_table: 
+ tag_table: 
+ memories: (g_5_8 : mem-field "edges") at (L),
+           (edges_21 : mem-field "existent_0") at (L),
+           (edges_21 : mem-field "to") at (L),
+           (edges_21 : mem-field "from") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function all_count:
+ alloc_table: 
+ tag_table: 
+ memories: (g_11_11 : mem-field "esize") at (L),
+           (g_11_11 : mem-field "edges") at (L),
+           (edges_69 : mem-field "existent_0") at (L),
+           (edges_69 : mem-field "to") at (L),
+           (edges_69 : mem-field "from") at (L)
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: t_5 at (Here), f_5 at (Here), g_11 at (Here)
+
+Effects: doing one iteration
+Effects: fixpoint reached
+Effects for logic function _LF__Predicate__l_count_empty_tail:
+ alloc_table: 
+ tag_table: 
+ memories: 
+ raw memories: 
+ precise memories: 
+ globals: 
+ locals: 
+
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function l_count_empty_tail:
+ reads:  alloc_table: (vertices_122 : alloc-root "__anonstruct_Vertex_2") at (Here),
+                      (g_1_12 : alloc-root "__anonstruct_Graph_4") at (Here),
+                      (edges_121 : alloc-root "__anonstruct_Edge_3") at (Here)
+         tag_table: 
+         memories: (g_1_12 : mem-field "esize") at (Here),
+                   (g_1_12 : mem-field "ecnt") at (Here),
+                   (g_1_12 : mem-field "edges") at (Here),
+                   (g_1_12 : mem-field "vsize") at (Here),
+                   (g_1_12 : mem-field "vertices") at (Here),
+                   (edges_121 : mem-field "existent_0") at (Here),
+                   (edges_121 : mem-field "to") at (Here),
+                   (edges_121 : mem-field "from") at (Here),
+                   (vertices_122 : mem-field "existent") at (Here)
+         raw memories: (g_1_12 : mem-field "esize") at (Here),
+                       (g_1_12 : mem-field "ecnt") at (Here)
+         precise memories: 
+         globals: 
+         locals: m at (Here), t_1 at (Here), f_1 at (Here), g_1 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: 
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function count:
+ reads:  alloc_table: (vertices_31 : alloc-root "__anonstruct_Vertex_2") at (Here),
+                      (g_0_13 : alloc-root "__anonstruct_Graph_4") at (Here),
+                      (edges_32 : alloc-root "__anonstruct_Edge_3") at (Here)
+         tag_table: (edges_32 : __anonstruct_Edge_3) at (Here)
+         memories: (g_0_13 : mem-field "esize") at (Here),
+                   (g_0_13 : mem-field "ecnt") at (Here),
+                   (g_0_13 : mem-field "edges") at (Here),
+                   (g_0_13 : mem-field "vsize") at (Here),
+                   (g_0_13 : mem-field "vertices") at (Here),
+                   (edges_32 : mem-field "existent_0") at (Here),
+                   (edges_32 : mem-field "to") at (Here),
+                   (edges_32 : mem-field "from") at (Here),
+                   (vertices_31 : mem-field "existent") at (Here)
+         raw memories: (g_0_13 : mem-field "esize") at (Here),
+                       (g_0_13 : mem-field "ecnt") at (Here),
+                       (g_0_13 : mem-field "edges") at (Here),
+                       (g_0_13 : mem-field "vertices") at (Here),
+                       (edges_32 : mem-field "existent_0") at (Here),
+                       (edges_32 : mem-field "to") at (Here),
+                       (edges_32 : mem-field "from") at (Here),
+                       (vertices_31 : mem-field "existent") at (Here)
+         precise memories: 
+         globals: 
+         locals: i at (Here), c at (Here), \result at (Here), t_0 at (Here),
+                 f_0 at (Here), g_0 at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: 
+          raw memories: 
+          precise memories: 
+          globals: 
+          locals: i at (Here), c at (Here)
+
+ raises: 
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: doing one iteration...
+Effects: fixpoint reached
+Effects for function add_edge:
+ reads:  alloc_table: (vertices_33 : alloc-root "__anonstruct_Vertex_2") at (Here),
+                      (g_14 : alloc-root "__anonstruct_Graph_4") at (Here),
+                      (edges_34 : alloc-root "__anonstruct_Edge_3") at (Here)
+         tag_table: (edges_34 : __anonstruct_Edge_3) at (Here)
+         memories: (g_14 : mem-field "esize") at (Here, Pre, Old, _Pre1),
+                   (g_14 : mem-field "ecnt") at (Here),
+                   (g_14 : mem-field "edges") at (Here, Pre, Old, _Pre1),
+                   (g_14 : mem-field "vsize") at (Here),
+                   (g_14 : mem-field "vertices") at (Here),
+                   (edges_34 : mem-field "existent_0") at (Here, Pre, Old,
+                   _Pre1), (edges_34 : mem-field "to") at (Here, Pre, Old,
+                   _Pre1), (edges_34 : mem-field "from") at (Here, Pre, Old,
+                   _Pre1), (vertices_33 : mem-field "existent") at (Here)
+         raw memories: (g_14 : mem-field "esize") at (Here),
+                       (g_14 : mem-field "ecnt") at (Here),
+                       (g_14 : mem-field "edges") at (Here, Pre, _Pre1),
+                       (g_14 : mem-field "vertices") at (Here),
+                       (edges_34 : mem-field "existent_0") at (Here, Pre,
+                       _Pre1), (edges_34 : mem-field "to") at (Here, Pre,
+                       _Pre1), (edges_34 : mem-field "from") at (Here, Pre,
+                       _Pre1), (vertices_33 : mem-field "existent") at (Here)
+         precise memories: 
+         globals: 
+         locals: l at (Here), i_0_0 at (Here), i_0 at (Here), t at (Here),
+                 f at (Here), g at (Here)
+
+ writes:  alloc_table: 
+          tag_table: 
+          memories: (g_14 : mem-field "ecnt") at (Here),
+                    (edges_34 : mem-field "existent_0") at (Here),
+                    (edges_34 : mem-field "to") at (Here),
+                    (edges_34 : mem-field "from") at (Here)
+          raw memories: (g_14 : mem-field "ecnt") at (Here),
+                        (edges_34 : mem-field "existent_0") at (Here),
+                        (edges_34 : mem-field "to") at (Here),
+                        (edges_34 : mem-field "from") at (Here)
+          precise memories: 
+          globals: 
+          locals: l at (Here), i_0_0 at (Here), i_0 at (Here)
+
+ raises: 
+Translate logic types
+Translate structures
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_tags(tag __anonstruct_Edge_3):
+  Found 1 tags.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Edge_3):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Edge_3):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_tags(tag __anonstruct_Graph_4):
+  Found 1 tags.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Graph_4):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Graph_4):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_tags(tag __anonstruct_Vertex_2):
+  Found 1 tags.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_memories(tag __anonstruct_Vertex_2):
+  Found 0 memories.
+all_allocs(tag __anonstruct_Vertex_2):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_tags(tag charP):
+  Found 1 tags.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag charP):
+  Found 0 memories.
+all_allocs(tag charP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_tags(tag voidP):
+  Found 1 tags.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+all_memories(tag voidP):
+  Found 0 memories.
+all_allocs(tag voidP):
+  Found 1 allocs.
+Translate variants
+Translate global regions
+Translate exceptions
+Translate enumerated types
+Translate dummies
+Translate standalone logic functions
+Logic function is_vertex
+Logic function edge_valid
+Logic function edges_valid
+Logic function graph_valid
+Logic function full
+Logic function range_existent
+Logic function count
+Logic function count_one_p
+Logic function count_split_p
+Logic function all_count
+Logic function _LF__Predicate__l_count_empty_tail
+Translate axiomatic declarations
+Axiomatic EdgesCount
+Axiomatic Graph
+Axiomatic LF__Axiomatic__l_count_empty_tail
+Axiomatic Padding
+Translate lemmas
+Translate functions
+Pre-treatement Function l_count_empty_tail
+Pre-treatement Function count
+Pre-treatement Function add_edge
+Function l_count_empty_tail
+Function count
+Function add_edge
+Produce makefile

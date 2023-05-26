@@ -1,0 +1,1260 @@
+[_C_128]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 353
+begin = 23
+end = 104
+
+[_C_115]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 339
+begin = 27
+end = 176
+
+[_C_52]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 182
+begin = 33
+end = 36
+
+[_C_132]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 371
+begin = 20
+end = 31
+
+[_C_121]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 215
+begin = 8
+end = 26
+
+[_C_35]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 184
+begin = 12
+end = 15
+
+[_C_158]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 395
+begin = 35
+end = 168
+
+[_C_117]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 341
+begin = 27
+end = 144
+
+[_C_144]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 376
+begin = 12
+end = 36
+
+[_C_120]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 215
+begin = 8
+end = 15
+
+[_C_56]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 191
+begin = 15
+end = 53
+
+[_C_28]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 179
+begin = 24
+end = 30
+
+[_C_156]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 401
+begin = 35
+end = 132
+
+[_C_72]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 217
+begin = 8
+end = 16
+
+[_C_180]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 373
+begin = 12
+end = 33
+
+[_C_130]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 350
+begin = 23
+end = 29
+
+[_C_59]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 164
+begin = 13
+end = 22
+
+[_C_140]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 375
+begin = 12
+end = 30
+
+[_C_48]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 12
+end = 20
+
+[_C_116]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 340
+begin = 27
+end = 173
+
+[_C_51]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 187
+begin = 23
+end = 52
+
+[_C_103]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 249
+begin = 31
+end = 180
+
+[_C_163]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 383
+begin = 35
+end = 44
+
+[_C_147]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 448
+begin = 35
+end = 342
+
+[_C_31]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 177
+begin = 23
+end = 35
+
+[_C_108]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 243
+begin = 31
+end = 37
+
+[add_edge]
+name = "Function add_edge"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 213
+begin = 0
+end = 32
+
+[_C_77]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 218
+begin = 8
+end = 16
+
+[l_painful_learning_how_to_count]
+name = "Lemma l_painful_learning_how_to_count"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 108
+begin = 53
+end = 303
+
+[_C_135]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 374
+begin = 12
+end = 32
+
+[_C_83]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 219
+begin = 8
+end = 18
+
+[_C_41]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 61
+end = 75
+
+[_C_151]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 420
+begin = 35
+end = 406
+
+[_C_4]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 105
+begin = 8
+end = 178
+
+[_C_183]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 371
+begin = 33
+end = 36
+
+[_C_101]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 260
+begin = 31
+end = 164
+
+[_C_71]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 217
+begin = 8
+end = 16
+
+[_C_70]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 217
+begin = 17
+end = 24
+
+[_C_89]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 334
+begin = 29
+end = 41
+
+[_C_167]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 458
+begin = 23
+end = 35
+
+[_C_155]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 404
+begin = 35
+end = 169
+
+[_C_90]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 327
+begin = 31
+end = 317
+
+[_C_137]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 375
+begin = 12
+end = 20
+
+[_C_61]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 165
+begin = 13
+end = 28
+
+[_C_69]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 216
+begin = 8
+end = 34
+
+[_C_32]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 176
+begin = 23
+end = 29
+
+[_C_23]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 154
+begin = 9
+end = 58
+
+[_C_19]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 150
+begin = 17
+end = 41
+
+[_C_188]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 210
+begin = 10
+end = 108
+
+[_C_42]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 61
+end = 80
+
+[_C_129]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 351
+begin = 23
+end = 35
+
+[_C_82]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 219
+begin = 8
+end = 18
+
+[_C_138]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 375
+begin = 12
+end = 20
+
+[_C_110]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 336
+begin = 19
+end = 31
+
+[_C_193]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 204
+begin = 11
+end = 26
+
+[_C_189]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 202
+begin = 11
+end = 38
+
+[_C_94]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 285
+begin = 31
+end = 379
+
+[_C_84]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 219
+begin = 8
+end = 18
+
+[_C_184]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 208
+begin = 10
+end = 24
+
+[_C_160]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 387
+begin = 35
+end = 183
+
+[_C_13]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 158
+begin = 12
+end = 48
+
+[_C_5]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 111
+begin = 8
+end = 200
+
+[_C_91]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 306
+begin = 31
+end = 329
+
+[_C_36]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 184
+begin = 12
+end = 15
+
+[_C_12]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 158
+begin = 41
+end = 46
+
+[_C_186]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 208
+begin = 10
+end = 24
+
+[_C_33]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 182
+begin = 24
+end = 31
+
+[_C_191]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 202
+begin = 24
+end = 38
+
+[_C_162]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 384
+begin = 35
+end = 73
+
+[_C_111]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 337
+begin = 16
+end = 19
+
+[_C_79]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 218
+begin = 8
+end = 38
+
+[_C_185]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 208
+begin = 10
+end = 24
+
+[_C_150]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 427
+begin = 35
+end = 385
+
+[_C_133]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 374
+begin = 12
+end = 20
+
+[l_count_one_p]
+name = "Lemma l_count_one_p"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 114
+begin = 73
+end = 475
+
+[_C_136]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 374
+begin = 12
+end = 32
+
+[_C_104]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 247
+begin = 31
+end = 45
+
+[_C_85]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 222
+begin = 19
+end = 183
+
+[_C_22]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 151
+begin = 18
+end = 29
+
+[_C_194]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 205
+begin = 11
+end = 34
+
+[_C_173]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 462
+begin = 31
+end = 180
+
+[_C_149]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 434
+begin = 35
+end = 406
+
+[_C_65]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 216
+begin = 17
+end = 24
+
+[_C_9]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 156
+begin = 23
+end = 55
+
+[_C_57]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 169
+begin = 12
+end = 41
+
+[_C_54]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 182
+begin = 33
+end = 36
+
+[_C_30]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 178
+begin = 23
+end = 48
+
+[_C_63]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 167
+begin = 13
+end = 36
+
+[_C_6]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 117
+begin = 8
+end = 374
+
+[_C_195]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 206
+begin = 11
+end = 34
+
+[_C_178]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 373
+begin = 13
+end = 21
+
+[_C_64]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 168
+begin = 13
+end = 36
+
+[_C_174]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 463
+begin = 31
+end = 149
+
+[_C_122]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 371
+begin = 13
+end = 14
+
+[_C_181]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 371
+begin = 33
+end = 36
+
+[_C_95]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 278
+begin = 31
+end = 358
+
+[_C_93]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 292
+begin = 31
+end = 361
+
+[_C_169]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 459
+begin = 20
+end = 23
+
+[_C_102]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 253
+begin = 31
+end = 200
+
+[_C_49]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 12
+end = 32
+
+[_C_24]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 174
+begin = 8
+end = 9
+
+[_C_170]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 459
+begin = 20
+end = 23
+
+[_C_166]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 458
+begin = 27
+end = 35
+
+[_C_45]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 36
+end = 52
+
+[_C_127]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 356
+begin = 23
+end = 99
+
+[_C_97]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 272
+begin = 31
+end = 168
+
+[_C_20]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 150
+begin = 17
+end = 29
+
+[_C_134]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 374
+begin = 12
+end = 20
+
+[_C_73]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 217
+begin = 8
+end = 32
+
+[_C_196]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 207
+begin = 11
+end = 19
+
+[LF__Lemma__l_count_empty_tail]
+name = "Lemma LF__Lemma__l_count_empty_tail"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 154
+begin = 9
+end = 58
+
+[_C_96]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 275
+begin = 31
+end = 132
+
+[_C_38]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 185
+begin = 23
+end = 52
+
+[_C_146]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 455
+begin = 33
+end = 45
+
+[_C_3]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 97
+begin = 26
+end = 122
+
+[_C_98]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 269
+begin = 31
+end = 165
+
+[_C_109]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 336
+begin = 23
+end = 31
+
+[_C_176]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 467
+begin = 23
+end = 75
+
+[_C_124]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 365
+begin = 23
+end = 118
+
+[_C_114]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 338
+begin = 27
+end = 144
+
+[_C_92]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 299
+begin = 31
+end = 382
+
+[_C_81]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 219
+begin = 8
+end = 18
+
+[_C_157]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 398
+begin = 35
+end = 168
+
+[_C_131]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 371
+begin = 24
+end = 31
+
+[_C_17]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 148
+begin = 17
+end = 26
+
+[_C_141]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 376
+begin = 12
+end = 20
+
+[_C_112]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 337
+begin = 16
+end = 19
+
+[count_zero]
+name = "Lemma count_zero"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 84
+begin = 81
+end = 188
+
+[_C_168]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 459
+begin = 20
+end = 23
+
+[_C_145]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 379
+begin = 20
+end = 21
+
+[_C_7]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 129
+begin = 8
+end = 206
+
+[_C_86]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 228
+begin = 12
+end = 232
+
+[_C_62]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 166
+begin = 13
+end = 28
+
+[_C_55]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 190
+begin = 15
+end = 46
+
+[_C_27]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 179
+begin = 23
+end = 36
+
+[_C_172]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 461
+begin = 31
+end = 180
+
+[_C_154]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 407
+begin = 35
+end = 173
+
+[_C_152]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 413
+begin = 35
+end = 365
+
+[_C_105]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 246
+begin = 31
+end = 69
+
+[l_count_empty_tail]
+name = "Function l_count_empty_tail"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 154
+begin = 9
+end = 58
+
+[_C_171]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 460
+begin = 31
+end = 149
+
+[l_count_split_mini]
+name = "Lemma l_count_split_mini"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 126
+begin = 18
+end = 258
+
+[_C_87]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 235
+begin = 12
+end = 211
+
+[_C_177]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 373
+begin = 13
+end = 21
+
+[_C_46]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 36
+end = 57
+
+[_C_44]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 36
+end = 44
+
+[_C_15]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 155
+begin = 12
+end = 23
+
+[_C_99]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 266
+begin = 31
+end = 125
+
+[_C_26]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 180
+begin = 21
+end = 32
+
+[_C_47]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 12
+end = 20
+
+[_C_10]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 157
+begin = 23
+end = 123
+
+[_C_68]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 216
+begin = 8
+end = 34
+
+[_C_60]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 164
+begin = 26
+end = 40
+
+[_C_53]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 182
+begin = 33
+end = 36
+
+[_C_40]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 61
+end = 69
+
+[_C_58]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 164
+begin = 13
+end = 40
+
+[_C_142]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 376
+begin = 12
+end = 20
+
+[_C_8]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 135
+begin = 8
+end = 434
+
+[_C_139]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 375
+begin = 12
+end = 30
+
+[_C_119]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 215
+begin = 18
+end = 26
+
+[_C_66]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 216
+begin = 8
+end = 16
+
+[_C_18]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 149
+begin = 17
+end = 31
+
+[_C_29]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 179
+begin = 29
+end = 35
+
+[_C_192]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 203
+begin = 11
+end = 26
+
+[_C_75]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 218
+begin = 17
+end = 24
+
+[_C_14]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 155
+begin = 16
+end = 23
+
+[l_painful_zero_count_after_ecnt]
+name = "Lemma l_painful_zero_count_after_ecnt"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 103
+begin = 21
+end = 245
+
+[_C_182]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 371
+begin = 33
+end = 36
+
+[_C_123]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 369
+begin = 21
+end = 32
+
+[_C_106]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 245
+begin = 31
+end = 40
+
+[_C_50]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 12
+end = 32
+
+[_C_37]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 184
+begin = 12
+end = 15
+
+[_C_43]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 36
+end = 44
+
+[_C_107]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 244
+begin = 31
+end = 44
+
+[_C_88]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 241
+begin = 16
+end = 17
+
+[_C_100]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 263
+begin = 31
+end = 167
+
+[_C_2]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 92
+begin = 24
+end = 82
+
+[_C_165]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 381
+begin = 35
+end = 41
+
+[_C_153]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 410
+begin = 35
+end = 138
+
+[_C_34]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 182
+begin = 20
+end = 31
+
+[_C_159]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 391
+begin = 35
+end = 203
+
+[_C_67]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 216
+begin = 8
+end = 16
+
+[_C_16]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 152
+begin = 16
+end = 47
+
+[_C_175]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 464
+begin = 31
+end = 180
+
+[_C_125]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 361
+begin = 23
+end = 151
+
+[_C_113]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 337
+begin = 16
+end = 19
+
+[_C_126]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 359
+begin = 23
+end = 37
+
+[_C_1]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 86
+begin = 22
+end = 104
+
+[_C_76]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 218
+begin = 8
+end = 16
+
+[_C_25]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 182
+begin = 13
+end = 14
+
+[count_one]
+name = "Lemma count_one"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 90
+begin = 115
+end = 200
+
+[_C_161]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 385
+begin = 35
+end = 49
+
+[_C_39]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 183
+begin = 61
+end = 69
+
+[l_count_split]
+name = "Lemma l_count_split"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 132
+begin = 76
+end = 538
+
+[_C_143]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 376
+begin = 12
+end = 36
+
+[_C_190]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 202
+begin = 11
+end = 20
+
+[_C_80]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 219
+begin = 11
+end = 18
+
+[_C_74]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 217
+begin = 8
+end = 32
+
+[_C_179]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 373
+begin = 13
+end = 33
+
+[_C_78]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 218
+begin = 8
+end = 38
+
+[_C_11]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 158
+begin = 41
+end = 46
+
+[_C_164]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 382
+begin = 35
+end = 48
+
+[_C_148]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 441
+begin = 35
+end = 354
+
+[count]
+name = "Function count"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 172
+begin = 0
+end = 29
+
+[count_split]
+name = "Lemma count_split"
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 95
+begin = 76
+end = 201
+
+[_C_21]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 150
+begin = 28
+end = 41
+
+[_C_187]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 209
+begin = 10
+end = 59
+
+[_C_118]
+file = "/home/andrew/astraver/hw3/final/graph.c"
+line = 342
+begin = 27
+end = 174
+

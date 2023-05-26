@@ -1,0 +1,18 @@
+theory Second
+    use import int.Int
+
+    predicate section_point (x: int) (y1: int) (y2: int) (y3: int) = 
+        y2 = (y1 + 1) * (y1 + 1) * (y1 + 1) && y3 = 3 * y1 * y1 + 3 * y1 + 1 && x >= y1 * y1 * y1
+
+    goal S_B:
+        forall x: int, y1: int, y2: int, y3: int.
+        x >= 0 -> (section_point x 0 1 1)
+
+    goal B_B:
+        forall x: int, y1: int, y2: int, y3: int.
+        x >= 0 && (section_point x y1 y2 y3) && y2 <= x -> (section_point x (y1 + 1) (y2 + y3 + 6 * y1 + 6) (y3 + 6 * y1 + 6))
+
+    goal B_H:
+        forall x: int, y1: int, y2: int, y3: int.
+        x >= 0 && (section_point x y1 y2 y3) && y2 > x -> y1 * y1 * y1 <= x && x < (y1 + 1) * (y1 + 1) * (y1 + 1)
+end

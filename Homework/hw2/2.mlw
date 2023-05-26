@@ -1,0 +1,203 @@
+(* +- аналогично MapVer с семинара + подсмотры в стандартную библиотеку*)
+module SetVer
+    use import ref.Ref
+    use import int.Int
+
+    type set 'a
+
+    constant empty : set 'a 
+
+    predicate has_elem (self : set 'a) (elem : 'a)
+
+    function add_elem (self : set 'a) (elem : 'a) : set 'a
+
+    function size (self : set 'a) : int
+
+    function rm_elem (self : set 'a) (elem : 'a) : set 'a
+
+    function min_elem (self : set int) : int
+
+    predicate is_empty (s : set 'a)
+
+    (* пустой set => has_elem = false *)
+    axiom empty_set:
+        forall s : set 'a, elem : 'a .
+            (s = empty) -> (has_elem s elem) <-> false
+
+    (* добавление в set *)
+    axiom add_elem_set:
+        forall s : set 'a, elem1 : 'a, elem2 : 'a .
+            (* 
+                говорим, что для set, в который добавлен elem1
+                has_elem <-> true
+            *)
+            ((has_elem (add_elem s elem1) elem1) <-> true) &&
+            (* говорим, что если мы добавили новый элемент это никак не влияет на состояние других*)
+            ((elem1 <> elem2) -> (has_elem (add_elem s elem1) elem2) = (has_elem s elem2))
+
+    axiom rm_elem_set:
+        forall s : set 'a, elem1 : 'a, elem2 : 'a .
+            (* 
+                говорим, что для set, у которого удален elem1
+                has_elem <-> false
+            *)
+            ((has_elem (rm_elem s elem1) elem1) <-> false) &&
+            (* говорим, что если мы удалили элемент это никак не влияет на состояние других*)
+            ((elem1 <> elem2) -> (has_elem (rm_elem s elem1) elem2) = (has_elem s elem2))
+
+    (* если нет элементов то он пустой *)
+    axiom is_empty_empty_set:
+        forall s : set 'a, e : 'a.
+            not (has_elem s e) <-> is_empty s
+
+    (* размер больше или равна 0 *)
+    axiom size_limitation:
+        forall s : set 'a.
+            size s >= 0
+
+    (* размер пустого равно 0 *)
+    axiom size_empty:
+        forall s: set 'a. 
+            size s = 0 <-> is_empty s
+
+    (* если такого элемента еще не было в сете, а потом добавили, то размер увеличивается на 1 *)
+    axiom size_add:
+        forall s : set 'a, e : 'a.
+            not (has_elem s e) -> size (add_elem s e) = (size s) + 1
+
+    (* если элемент был и мы его удаляем, то размер уменьшается *)
+    axiom size_remove:
+        forall s : set 'a, e : 'a.
+            (has_elem s e) ->  size (rm_elem s e) = (size s) - 1 
+
+    (* если не пуст, то минимальный элемент содержится там*)
+    axiom min_elem_exists:
+        forall s: set int. 
+            not (is_empty s) -> (has_elem s (min_elem s))
+    
+    (* для любого числа в сете минимальный элемент меньше или равен *)
+    axiom min_elem_minimal:
+        forall s: set int, e: int. 
+            (has_elem s e) -> (min_elem s) <= e
+
+    val add_elem (s : set 'a) (elem : 'a) : set 'a
+        ensures { (has_elem result elem) = true }
+
+    val rm_elem (s : set 'a) (elem : 'a) : set 'a
+        ensures { (has_elem result elem) = false }
+
+    val size (self : set 'a) : int
+        ensures {result = size self}
+
+    val is_empty (self : set 'a) : bool
+        ensures {result = is_empty self}
+
+    val min_elem (self : set int) : int
+        ensures {result = min_elem self} 
+end
+
+
+module SieveOfEratosthenes
+    use import int.Int
+    use import SetVer
+    use import ref.Ref
+    use import number.Prime
+    use import number.Divisibility
+
+    (* инициализация изначального сета от 2 до b включительно *)
+    function init_set (n : int) : set int
+
+    axiom init_set: 
+        forall x n: int. 
+            (has_elem (init_set n) x) <-> 2 <= x <= n
+
+    (* сколько не пытался - не работал такой вариант 
+    let init_set (b : int) : set int
+        requires { 2 <= b }
+        ensures { forall k : int. (has_elem result k) <-> 2 <= k <= b }
+        ensures { (size result) = (b - 1) }
+    =
+        let res = ref empty in
+        let i = ref 2 in
+        while (size !res) <> (b - 1) do
+            (* variant { b - !i } *)
+            invariant { forall k : int. ((has_elem !res k) <-> 2 <= k <= !i) || (is_empty !res)}
+            invariant { (size !res) = !i - 1 || (size !res) = 0 }
+            (* invariant {forall k : int. 2 <= k <= !i <-> (has_elem !res k)} *)
+            res := (add_elem !res !i);
+            i := !i + 1;
+        done;
+        !res *)
+
+
+    (* просеивание числа через все множество all_nums *)
+    let sieve_set (all_nums : set int) (prime_number : int) (n : int)  : set int
+        (* только простое число на входе *)
+        requires { (prime prime_number) }
+
+        (* если k делится на входное простое число, то его нет в итоговом множестве *)
+        ensures { forall k : int. ((divides prime_number k) && (prime_number <= k <= n)) -> (not (has_elem result k)) }
+    =
+        let res = ref all_nums in
+        let i = ref prime_number in
+        while !i <= n do
+            variant {n - !i}
+            (* для всех k от простого до текущей итерации, которые делятся на простое число - должны быть уже удалены*)
+            invariant {forall k : int. (prime_number <= k < !i) && (divides prime_number k) -> (not (has_elem !res k))} 
+
+            (* если найдется такое число i, которое делится на входное простое число, то удаляем его из множества *)
+            if (has_elem !res !i) && (divides prime_number !i) then 
+                res := (rm_elem !res !i);
+            i := !i + 1
+        done;
+        !res
+
+    (*  
+        https://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D1%88%D0%B5%D1%82%D0%BE_%D0%AD%D1%80%D0%B0%D1%82%D0%BE%D1%81%D1%84%D0%B5%D0%BD%D0%B0
+        Алгоритм (для множества): 
+        1) помещаем все числа от 2 до n в set 
+        2) создаем пустое множество - результат со всеми простыми числами
+        3) берем минимальный элемент в set (изначально это 2 - заведомо простое число)
+        4) просеиваем все множество, убирая это число и все числа, делящиеся на него
+        5) добавляем число в множество простых чисел
+        6) следующее минимальное число будет по алгоритму заведому простым, по этому ищем снова минимальный элемент и 3)
+
+        Алгоритм завершается когда изначальный массив станет пустым
+    *)
+
+    let erat (n: int): set int
+        requires { n >= 2 }
+        (* говорим, что на выхлопе хотим множество в котором все числа только простые, остальных нет *)
+        ensures { forall m: int. m <= n && (prime m)        <-> (has_elem result m) }
+        ensures { forall m: int. m <= n && (not (prime m))  <-> not (has_elem result m) }
+    = 
+        let all_nums = ref (init_set n) in
+        let primes = ref empty in
+
+        while (not (is_empty !all_nums)) do
+            (* размер множества уменьшается *)
+            variant { size !all_nums }
+
+            (* если число лежит в primes, то оно простое *)
+            invariant { forall k: int. (has_elem !primes k) -> (prime k) && k <= n }
+
+            (* если число лежит в all_nums, то оно из нашего промежутка [2, n] *)
+            invariant { forall k: int. (has_elem !all_nums k) -> 2 <= k <= n }
+
+            (* если есть число m, то в all_nums присутвуют все числа k, на которые делится число m *)
+            invariant { forall k l: int. (has_elem !all_nums k) && 2 <= l && (divides l k) -> (has_elem !all_nums l) }
+
+            (* если число простое, то оно содержится либо в all_nums, либо в primes *)
+            invariant { forall k: int. k <= n && (prime k) -> (has_elem !all_nums k) || (has_elem !primes k) }
+            
+            (* число заведомо просто по алгоритму *)
+            let prime_number = min_elem !all_nums in
+
+            (* просеиваем массив, удаляя это простое число и все числа, которые делятся на него *)
+            all_nums := (sieve_set !all_nums prime_number n);
+
+            (* добавляем его в множество простых чисел *)
+            primes := (add_elem !primes prime_number);
+        done;
+        !primes
+end

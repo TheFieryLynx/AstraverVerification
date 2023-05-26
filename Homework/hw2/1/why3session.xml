@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="4">
+<prover id="0" name="Alt-Ergo" version="2.4.2" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="1" name="CVC4" version="1.7" timelimit="5" steplimit="0" memlimit="1000"/>
+<file name="../1.mlw" expanded="true">
+<theory name="Task1" sum="7fe7056e4e41b256ba53cf4979560c35" expanded="true">
+ <goal name="WP_parameter task_1" expl="VC for task_1" expanded="true">
+ <transf name="split_goal_wp" expanded="true">
+  <goal name="WP_parameter task_1.1" expl="postcondition" expanded="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="41"/></proof>
+  <proof prover="1"><result status="valid" time="0.07" steps="13708"/></proof>
+  </goal>
+  <goal name="WP_parameter task_1.2" expl="precondition" expanded="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+  <proof prover="1"><result status="valid" time="0.05" steps="10529"/></proof>
+  </goal>
+  <goal name="WP_parameter task_1.3" expl="postcondition" expanded="true">
+  <proof prover="0"><result status="valid" time="0.06" steps="513"/></proof>
+  <proof prover="1"><result status="valid" time="0.09" steps="15057"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+</file>
+</why3session>
